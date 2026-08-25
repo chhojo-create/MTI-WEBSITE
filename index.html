@@ -1,1154 +1,356 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mina Textile Industries - Precision Engineering & Industrial Castings</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --red: #E31B23;
-            --blue: #003366;
-            --gold: #D4A855;
-            --light-gold: #FFC857;
-            --dark-bg: #f8f7f3;
-            --white: #ffffff;
-            --text-dark: #1a1a1a;
-            --text-light: #666;
-        }
-
-        body {
-            font-family: 'Georgia', serif;
-            line-height: 1.6;
-            color: var(--text-dark);
-            background: var(--white);
-            overflow-x: hidden;
-        }
-
-        /* Typography */
-        h1, h2, h3 {
-            font-weight: 700;
-            letter-spacing: -0.5px;
-        }
-
-        h1 {
-            font-size: 3.5rem;
-            color: var(--blue);
-            margin-bottom: 1rem;
-        }
-
-        h2 {
-            font-size: 2.5rem;
-            color: var(--blue);
-            margin-bottom: 2rem;
-            position: relative;
-            padding-bottom: 1rem;
-        }
-
-        h2::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 80px;
-            height: 4px;
-            background: linear-gradient(90deg, var(--red) 0%, var(--light-gold) 100%);
-        }
-
-        h3 {
-            font-size: 1.3rem;
-            color: var(--blue);
-            margin-bottom: 0.8rem;
-        }
-
-        p {
-            font-size: 1.05rem;
-            color: var(--text-light);
-            margin-bottom: 1.5rem;
-        }
-
-        /* Navigation */
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: var(--white);
-            box-shadow: 0 2px 20px rgba(0,0,0,0.08);
-            z-index: 1000;
-            padding: 1rem 0;
-        }
-
-        .nav-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 1.8rem;
-            font-weight: 800;
-            color: var(--red);
-            text-decoration: none;
-        }
-
-        .logo span {
-            color: var(--blue);
-        }
-
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 3rem;
-        }
-
-        nav a {
-            text-decoration: none;
-            color: var(--text-dark);
-            font-weight: 500;
-            transition: color 0.3s;
-            font-size: 0.95rem;
-        }
-
-        nav a:hover {
-            color: var(--red);
-        }
-
-        /* Hero Section */
-        .hero {
-            margin-top: 70px;
-            background: linear-gradient(135deg, var(--blue) 0%, rgba(0,51,102,0.95) 100%),
-                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><defs><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="1"/></pattern></defs><rect width="1200" height="600" fill="url(%23grid)"/></svg>');
-            color: var(--white);
-            padding: 120px 2rem 100px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -10%;
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(227, 27, 35, 0.15) 0%, transparent 70%);
-            border-radius: 50%;
-            animation: float 6s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-30px); }
-        }
-
-        .hero-content {
-            max-width: 900px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 1;
-        }
-
-        .hero h1 {
-            color: var(--white);
-            font-size: 4rem;
-            margin-bottom: 1.5rem;
-            animation: slideUp 0.8s ease-out;
-        }
-
-        .hero .subtitle {
-            font-size: 1.4rem;
-            color: var(--light-gold);
-            margin-bottom: 2rem;
-            animation: slideUp 0.8s ease-out 0.2s both;
-        }
-
-        .hero p {
-            color: rgba(255,255,255,0.9);
-            font-size: 1.1rem;
-            margin-bottom: 2.5rem;
-            animation: slideUp 0.8s ease-out 0.4s both;
-        }
-
-        @keyframes slideUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .cta-button {
-            display: inline-block;
-            padding: 16px 40px;
-            background: var(--red);
-            color: var(--white);
-            text-decoration: none;
-            border-radius: 4px;
-            font-weight: 600;
-            transition: all 0.3s;
-            animation: slideUp 0.8s ease-out 0.6s both;
-        }
-
-        .cta-button:hover {
-            background: #c91a1f;
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(227, 27, 35, 0.3);
-        }
-
-        /* Container */
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        .section {
-            padding: 100px 0;
-        }
-
-        .section-alt {
-            background: var(--dark-bg);
-        }
-
-        /* Grid Layouts */
-        .grid-2 {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-        }
-
-        .grid-3 {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2.5rem;
-        }
-
-        .grid-6 {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-        }
-
-        /* Cards */
-        .card {
-            background: var(--white);
-            padding: 2.5rem;
-            border-radius: 8px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-            transition: all 0.3s;
-            border-top: 4px solid var(--red);
-        }
-
-        .card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 12px 40px rgba(0,0,0,0.12);
-        }
-
-        .card h3 {
-            margin-bottom: 1rem;
-            color: var(--blue);
-        }
-
-        .card p {
-            font-size: 1rem;
-            margin-bottom: 0;
-        }
-
-        /* Feature with number */
-        .feature-number {
-            display: flex;
-            gap: 2rem;
-            margin-bottom: 3rem;
-        }
-
-        .feature-number .number {
-            background: linear-gradient(135deg, var(--red), var(--light-gold));
-            color: var(--white);
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2.5rem;
-            font-weight: bold;
-            flex-shrink: 0;
-        }
-
-        .feature-number .text h3 {
-            margin-top: 0;
-        }
-
-        /* Timeline */
-        .timeline {
-            position: relative;
-            padding: 2rem 0;
-        }
-
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 3px;
-            height: 100%;
-            background: var(--gold);
-        }
-
-        .timeline-item {
-            margin-bottom: 3rem;
-            position: relative;
-        }
-
-        .timeline-item:nth-child(odd) {
-            margin-left: 0;
-            margin-right: 50%;
-            padding-right: 3rem;
-            text-align: right;
-        }
-
-        .timeline-item:nth-child(even) {
-            margin-left: 50%;
-            margin-right: 0;
-            padding-left: 3rem;
-            text-align: left;
-        }
-
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            background: var(--red);
-            border: 4px solid var(--white);
-            border-radius: 50%;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 1;
-        }
-
-        .timeline-content {
-            background: var(--white);
-            padding: 2rem;
-            border-radius: 6px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
-        }
-
-        .timeline-content h3 {
-            color: var(--red);
-            margin-bottom: 0.5rem;
-        }
-
-        .timeline-year {
-            font-size: 2rem;
-            font-weight: bold;
-            color: var(--blue);
-            margin-bottom: 0.5rem;
-        }
-
-        /* Values Grid */
-        .values-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 2rem;
-        }
-
-        .value-item {
-            text-align: center;
-            padding: 2rem;
-        }
-
-        .value-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            height: 80px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .value-item h3 {
-            color: var(--blue);
-            margin-bottom: 0.5rem;
-        }
-
-        /* Product List */
-        .product-column {
-            display: grid;
-            gap: 1.5rem;
-        }
-
-        .product-item {
-            padding: 1.5rem;
-            background: var(--dark-bg);
-            border-left: 4px solid var(--red);
-            border-radius: 4px;
-            font-size: 0.95rem;
-        }
-
-        .product-item strong {
-            color: var(--blue);
-        }
-
-        /* Client List */
-        .client-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-        }
-
-        .client-item {
-            padding: 1.5rem;
-            background: var(--dark-bg);
-            text-align: center;
-            border-radius: 6px;
-            font-weight: 500;
-            color: var(--text-dark);
-            border: 1px solid #e0e0e0;
-        }
-
-        /* Footer */
-        footer {
-            background: var(--blue);
-            color: var(--white);
-            padding: 4rem 2rem;
-            margin-top: 100px;
-        }
-
-        .footer-content {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 4rem;
-            margin-bottom: 3rem;
-        }
-
-        .footer-section h3 {
-            color: var(--light-gold);
-            margin-bottom: 1.5rem;
-        }
-
-        .footer-section ul {
-            list-style: none;
-        }
-
-        .footer-section ul li {
-            margin-bottom: 0.8rem;
-        }
-
-        .footer-section a {
-            color: rgba(255,255,255,0.8);
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        .footer-section a:hover {
-            color: var(--light-gold);
-        }
-
-        .footer-bottom {
-            border-top: 1px solid rgba(255,255,255,0.2);
-            padding-top: 2rem;
-            text-align: center;
-            font-size: 0.9rem;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            h1 { font-size: 2.5rem; }
-            h2 { font-size: 1.8rem; }
-            
-            .grid-2, .grid-3, .grid-6 {
-                grid-template-columns: 1fr;
-            }
-
-            .values-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .client-grid {
-                grid-template-columns: 1fr;
-            }
-
-            nav ul {
-                gap: 1.5rem;
-            }
-
-            .timeline::before {
-                left: 20px;
-            }
-
-            .timeline-item, .timeline-item:nth-child(odd), .timeline-item:nth-child(even) {
-                margin: 0;
-                padding-left: 80px;
-                text-align: left;
-            }
-
-            .timeline-item::before {
-                left: 0;
-            }
-
-            .footer-content {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MTI — Mina Textile Industries | Precision Engineering Since 1964</title>
+  <meta name="description" content="ISO 9001:2015-certified manufacturer of precision-engineered power transmission products and industrial castings. Based in Ahmedabad, Gujarat." />
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/home.css" />
 </head>
 <body>
-    <!-- Navigation -->
-    <nav>
-        <div class="nav-container">
-            <a href="#" class="logo">MTI <span>Industrial</span></a>
-            <ul>
-                <li><a href="#about">About</a></li>
-                <li><a href="#markets">Markets</a></li>
-                <li><a href="#products">Products</a></li>
-                <li><a href="#sustainability">Sustainability</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
+
+  <!-- NAVBAR -->
+  <nav class="navbar" role="navigation" aria-label="Main">
+    <div class="navbar__inner">
+      <a href="index.html" class="navbar__logo">
+        <img src="images/mina-logo-compact.png" alt="MTI — Mina Textile Industries" class="navbar__logo-img" width="910" height="274" />
+      </a>
+      <ul class="navbar__nav">
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="products.html">Products</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <div class="navbar__cta">
+        <a href="contact.html" class="btn btn-primary">Get a Quote</a>
+        <button class="hamburger" aria-label="Open menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero__bg"></div>
+    <div class="hero__overlay"></div>
+    <div class="container hero__content">
+      <p class="hero__eyebrow">ISO 9001:2015 Certified · Est. 1964</p>
+      <h1 class="hero__title">Precision Engineering<br /><em>Built for the World</em></h1>
+      <p class="hero__sub">
+        From castings to CNC-machined ready-to-install components — MTI delivers
+        industrial excellence to OEMs across construction, agriculture, energy, and beyond.
+      </p>
+      <div class="hero__actions">
+        <a href="products.html" class="btn btn-primary">Explore Products</a>
+        <a href="about.html" class="btn btn-outline">Our Story →</a>
+      </div>
+      <div class="hero__badges">
+        <div class="hero__badge">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"/></svg>
+          ISO 9001:2015
         </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content">
-            <h1>Reduce Supply Chain Risk. Accelerate Time-to-Market.</h1>
-            <p class="subtitle">Since 1964</p>
-            <p>MTI is your complete industrial component partner—delivering precision-engineered castings and ready-to-install solutions faster and more reliably than outsourced suppliers can.</p>
-            <a href="#contact" class="cta-button">Get in Touch</a>
+        <div class="hero__badge">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+          Global OEM Supply
         </div>
-    </section>
-
-    <!-- About Section -->
-    <section class="section" id="about">
-        <div class="container">
-            <h2>About Mina Textile Industries</h2>
-            
-            <div class="grid-2" style="margin-bottom: 4rem;">
-                <div>
-                    <h3>Our Story</h3>
-                    <p>Founded in 1964, Mina Textile Industries (MTI) has evolved from a simple textile casting supplier to a comprehensive manufacturing partner trusted by leading global OEMs. This 60-year journey taught us one lesson: <strong>your success is our success</strong>.</p>
-                    <p>We've watched the manufacturing landscape transform—from single-source suppliers to complex global supply chains. Through every change, our commitment remained constant: deliver components that work reliably, arrive on time, and cost less than alternatives because we've eliminated every inefficiency.</p>
-                </div>
-                <div>
-                    <h3>Our Mission</h3>
-                    <p>To be your most reliable industrial component partner by engineering solutions that reduce your supply chain risk, accelerate your time-to-market, and strengthen your competitive advantage in global markets.</p>
-                    <h3 style="margin-top: 2rem;">Our Competitive Edge</h3>
-                    <p><strong>We give you what other foundries can't:</strong> complete control over quality because everything happens under one roof. From induction melting to precision machining to finished coating—all managed by our team, all held to the same exacting standards. This eliminates finger-pointing, reduces lead times by 60%, and gives you the lowest total cost of ownership in the industry.</p>
-                </div>
-            </div>
-
-            <h2>Our Evolution</h2>
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <div class="timeline-year">1964</div>
-                        <h3>Founded</h3>
-                        <p>Established to supply castings to the textile sector.</p>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <div class="timeline-year">1974</div>
-                        <h3>Expansion</h3>
-                        <p>Expanded into machined (ready-to-use) components for industrial equipment.</p>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <div class="timeline-year">2000</div>
-                        <h3>Diversification</h3>
-                        <p>Entered new markets and diversified client base, including global OEMs.</p>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <div class="timeline-year">2015</div>
-                        <h3>Certification</h3>
-                        <p>Obtained ISO 9001:2015 certification for quality management.</p>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <div class="timeline-year">2025</div>
-                        <h3>Growth Phase</h3>
-                        <p>Pursuing investment opportunities and capacity expansion.</p>
-                    </div>
-                </div>
-            </div>
+        <div class="hero__badge">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>
+          Ahmedabad, Gujarat
         </div>
-    </section>
+      </div>
+    </div>
+    <div class="hero__scroll">
+      <span>Scroll</span>
+      <div class="hero__scroll-line"></div>
+    </div>
+  </section>
 
-    <!-- How We Deliver Section -->
-    <section class="section section-alt">
-        <div class="container">
-            <h2>Our Core Values in Action</h2>
-            <p style="max-width: 900px; margin-bottom: 3rem; font-size: 1.1rem;">These aren't just words—they're how we operate every single day, and they directly benefit you:</p>
-            <div class="values-grid">
-                <div class="value-item">
-                    <div class="value-icon">🤝</div>
-                    <h3>Integrity</h3>
-                    <p>We make promises we keep—honest timelines, transparent pricing, no hidden costs. When you work with MTI, you know exactly where you stand.</p>
-                </div>
-                <div class="value-item">
-                    <div class="value-icon">✓</div>
-                    <h3>Quality</h3>
-                    <p>Every component is precision-engineered and rigorously tested. We treat your specifications as non-negotiable because your reputation depends on them.</p>
-                </div>
-                <div class="value-item">
-                    <div class="value-icon">👥</div>
-                    <h3>Collaboration</h3>
-                    <p>We listen to your challenges and work as an extension of your team. Your success is our success, and we invest in that partnership.</p>
-                </div>
-                <div class="value-item">
-                    <div class="value-icon">⚡</div>
-                    <h3>Innovation</h3>
-                    <p>We continuously upgrade our technology and processes to deliver faster, cheaper, and better solutions. Your competitive advantage is our mission.</p>
-                </div>
-            </div>
+  <!-- STATS -->
+  <section class="stats-band">
+    <div class="container stats-band__grid">
+      <div class="stat-card fade-up">
+        <span class="stat-card__num"><span data-target="60">0</span>+</span>
+        <span class="stat-card__label">Years of Operation</span>
+      </div>
+      <div class="stat-card fade-up">
+        <span class="stat-card__num"><span data-target="30">0</span>+</span>
+        <span class="stat-card__label">Valued Clients</span>
+      </div>
+      <div class="stat-card fade-up">
+        <span class="stat-card__num"><span data-target="500">0</span>kg</span>
+        <span class="stat-card__label">Max Casting Weight</span>
+      </div>
+      <div class="stat-card fade-up">
+        <span class="stat-card__num"><span data-target="6">0</span></span>
+        <span class="stat-card__label">Target Industries</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT SNAPSHOT -->
+  <section class="section about-snap">
+    <div class="container about-snap__grid">
+      <div class="about-snap__visual fade-up">
+        <div class="about-snap__img-wrap">
+          <div class="about-snap__geo geo1"></div>
+          <div class="about-snap__geo geo2"></div>
+          <div class="about-snap__inner-card">
+            <p class="inner-card__year">1964</p>
+            <p class="inner-card__label">Year Founded</p>
+          </div>
         </div>
-    </section>
-
-
-
-    <!-- Why Choose MTI Section -->
-    <section class="section">
-        <div class="container">
-            <h2>Why Choose MTI?</h2>
-            <p style="max-width: 900px; margin-bottom: 3rem; font-size: 1.1rem;">Five integrated competitive advantages work together to reduce your supply chain complexity, lower your total cost of ownership, and accelerate your growth:</p>
-            
-            <div class="grid-2" style="gap: 3rem; margin-bottom: 3rem;">
-                <div class="card">
-                    <h3>Fully Integrated In-House Manufacturing</h3>
-                    <ul style="list-style: none; padding: 0; margin: 0;">
-                        <li style="padding: 0.8rem 0; border-bottom: 1px solid #eee;">• <strong>From induction melting (500+ tons/month capacity) through CNC machining (200+ components/day) to final finishing—all under one roof—</strong> we compress what normally requires three separate vendors into a seamless, coordinated process that delivers components 60% faster than outsourced suppliers while eliminating the quality loss that happens when parts transfer between multiple facilities.</li>
-                        <li style="padding: 0.8rem 0; border-bottom: 1px solid #eee;">• <strong>Every process stage has built-in quality checkpoints (13-point testing), so problems are caught and corrected in hours, not discovered weeks later in your production line</strong> when rework becomes exponentially more expensive.</li>
-                        <li style="padding: 0.8rem 0;">• <strong>No middleman costs or outsourcing markups—the 10-15% savings we achieve through vertical integration get passed directly to you,</strong> strengthening your competitive pricing while we maintain premium quality standards.</li>
-                    </ul>
-                </div>
-
-                <div class="card">
-                    <h3>Proven Global Supply Chain Experience</h3>
-                    <ul style="list-style: none; padding: 0; margin: 0;">
-                        <li style="padding: 0.8rem 0; border-bottom: 1px solid #eee;">• <strong>Six decades serving multinational OEMs like Ingersoll Rand, Dresser Rand, and Gardner Denver means export standards (ASME, EN, API, IS) and global compliance protocols are embedded in our operations—</strong>you don't need to educate a new supplier about international requirements or manage complex certification processes.</li>
-                        <li style="padding: 0.8rem 0;">• <strong>This proven track record of on-time delivery to global partners gives you the credibility to access international markets yourself</strong> and leverage MTI's regulatory expertise to accelerate your own global expansion without the complexity of managing inexperienced suppliers.</li>
-                    </ul>
-                </div>
-
-                <div class="card">
-                    <h3>Dual Capability: Castings + Precision Machining</h3>
-                    <ul style="list-style: none; padding: 0; margin: 0;">
-                        <li style="padding: 0.8rem 0; border-bottom: 1px solid #eee;">• <strong>Rather than sourcing raw castings and then finding a separate precision shop, you get complete ready-to-install solutions with our 1-8000 KG weight range flexibility,</strong> eliminating the coordination complexity, quality inconsistency, and 8-12 week lead times that come from managing multiple vendors while achieving your delivery commitments.</li>
-                        <li style="padding: 0.8rem 0; border-bottom: 1px solid #eee;">• <strong>When quality issues arise (rare, but it happens), you have one contact, one team, one facility responsible—not a conversation between three vendors about whose defect it is</strong> while your production line sits idle. This single point of accountability compresses problem resolution from weeks to hours.</li>
-                        <li style="padding: 0.8rem 0;">• <strong>By handling casting, machining, surface treatment (CED, powder coating, phosphating), and testing internally, we compress multi-month timelines into 2-4 weeks,</strong> letting you respond faster to market demand and win deals competitors can't fulfill in your required timeframe.</li>
-                    </ul>
-                </div>
-
-                <div class="card">
-                    <h3>Strategic Location & Government Support</h3>
-                    <ul style="list-style: none; padding: 0; margin: 0;">
-                        <li style="padding: 0.8rem 0; border-bottom: 1px solid #eee;">• <strong>Being located in Gujarat's industrial ecosystem—home to 25% of India's foundry output and 500+ complementary manufacturing facilities—gives us access to specialized suppliers, skilled labor, and logistical networks</strong> that inland competitors cannot match, enabling us to scale production rapidly while maintaining cost efficiency and quality.</li>
-                        <li style="padding: 0.8rem 0; border-bottom: 1px solid #eee;">• <strong>Proximity to major ports (Mundra, Kandla) means we can ship your export orders with 30-40% lower logistics costs and 2-3 week faster delivery to global destinations</strong> compared to inland competitors, directly strengthening your competitiveness in international markets.</li>
-                        <li style="padding: 0.8rem 0;">• <strong>Government incentives (Make in India, PLI schemes) mean we continuously reinvest in Industry 4.0 technology, automation, and quality upgrades—advantages we translate into faster turnaround, better precision, and more stable pricing for you.</strong></li>
-                    </ul>
-                </div>
-
-                <div class="card">
-                    <h3>Quality Infrastructure Depth</h3>
-                    <ul style="list-style: none; padding: 0; margin: 0;">
-                        <li style="padding: 0.8rem 0; border-bottom: 1px solid #eee;">• <strong>Our 13-point testing capability (spectro analysis, ultrasound, MPT, dimensional accuracy, dynamic balancing, hydro testing) combined with 1,000+ monthly test capacity means every batch undergoes rigorous verification—</strong>issues that slip through at competitor facilities are caught at MTI before they reach your production line, preventing costly field failures and warranty claims.</li>
-                        <li style="padding: 0.8rem 0; border-bottom: 1px solid #eee;">• <strong>Third-party inspection facility access gives you independent verification of quality metrics,</strong> providing the external credibility and documentation you need to satisfy your own customers' audit requirements without conducting redundant testing.</li>
-                        <li style="padding: 0.8rem 0;">• <strong>ISO 9001:2015 certification backed by documented procedures, statistical controls, and continuous improvement systems means consistency—you get the same precision every single time,</strong> eliminating quality variance that forces you to over-engineer designs or maintain costly safety stock.</li>
-                    </ul>
-                </div>
-            </div>
+        <div class="about-snap__timeline">
+          <div class="tl-item"><span class="tl-dot"></span><span class="tl-text">1964 — Founded for textile castings</span></div>
+          <div class="tl-item"><span class="tl-dot"></span><span class="tl-text">1974 — Expanded to industrial components</span></div>
+          <div class="tl-item"><span class="tl-dot"></span><span class="tl-text">2000 — Entered global OEM markets</span></div>
+          <div class="tl-item"><span class="tl-dot active"></span><span class="tl-text">2015 — ISO 9001:2015 Certified</span></div>
         </div>
-    </section>
-
-    <!-- Market Position Section -->
-    <section class="section section-alt" id="markets">
-        <div class="container">
-            <h2>Market Position</h2>
-            
-            <div style="background: var(--white); padding: 3rem; border-radius: 8px; margin-bottom: 3rem;">
-                <h3 style="color: var(--blue); margin-bottom: 1.5rem;">Strong Market Tailwinds</h3>
-                <ul style="list-style: none; padding: 0; gap: 1rem; display: grid;">
-                    <li style="padding: 1rem; border-left: 4px solid var(--red);">• <strong>Rapid industrialization and infrastructure expansion</strong> across India is driving unprecedented demand for precision components across all sectors we serve.</li>
-                    <li style="padding: 1rem; border-left: 4px solid var(--red);">• <strong>Global supply chain diversification from China</strong> is creating massive opportunities for Indian manufacturers who can deliver quality at scale—exactly what MTI offers.</li>
-                    <li style="padding: 1rem; border-left: 4px solid var(--red);">• <strong>Increased demand for localized components by MNCs and OEMs</strong> means multinational companies want suppliers closer to their production facilities, and MTI is positioned as a preferred partner.</li>
-                    <li style="padding: 1rem; border-left: 4px solid var(--red);">• <strong>Supportive government policies</strong> like Make in India and PLI schemes are incentivizing manufacturing growth, allowing us to invest in technology and pass savings to you.</li>
-                </ul>
-            </div>
+      </div>
+      <div class="about-snap__text fade-up">
+        <span class="section-label">Who We Are</span>
+        <div class="amber-bar"></div>
+        <h2>Six Decades of<br />Manufacturing Mastery</h2>
+        <p style="margin:1.25rem 0 1rem;">
+          Mina Textile Industries (MTI) is an ISO 9001:2015-certified company that has grown
+          from supplying raw textile castings to delivering precision-engineered power
+          transmission products and industrial castings for OEMs worldwide.
+        </p>
+        <p>
+          Based in Ahmedabad, Gujarat, MTI combines decades of expertise with modern
+          manufacturing facilities — from induction melting to CNC machining and finishing —
+          to serve diverse sectors including construction, agriculture, and energy.
+        </p>
+        <div class="about-snap__values">
+          <div class="value-chip">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            Integrity
+          </div>
+          <div class="value-chip">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9 12l2 2 4-4"/></svg>
+            Quality
+          </div>
+          <div class="value-chip">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87m-4-12a4 4 0 010 7.75"/></svg>
+            Collaboration
+          </div>
+          <div class="value-chip">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
+            Innovation
+          </div>
         </div>
-    </section>
+        <a href="about.html" class="btn btn-navy" style="margin-top:1.75rem;">Learn More About MTI</a>
+      </div>
+    </div>
+  </section>
 
-    <!-- OEM Solutions Section -->
-    <section class="section">
-        <div class="container">
-            <h2>Solving Your OEM Sourcing Challenges</h2>
-            <p style="max-width: 900px; margin-bottom: 3rem; font-size: 1.1rem;">Every OEM faces interconnected sourcing challenges. MTI's integrated capabilities address all of them simultaneously, creating a multiplier effect on your competitiveness:</p>
-            
-            <div class="grid-2" style="gap: 3rem;">
-                <div style="background: var(--dark-bg); padding: 2rem; border-radius: 8px; border-left: 4px solid var(--red);">
-                    <h3 style="color: var(--red); margin-bottom: 1rem;">Supply Chain Fragility & Lead Time Pressure</h3>
-                    <p style="color: var(--text-light); margin-bottom: 1rem;"><strong style="color: var(--blue);">The Challenge:</strong> Relying on single-source suppliers creates risk during disruptions, while coordinating multiple vendors (casting supplier + machining shop + coating specialist) stretches delivery timelines to 8-12 weeks, making it impossible to respond quickly to market demand or customer urgencies.</p>
-                    <p style="color: var(--text-light);"><strong style="color: var(--blue);">MTI's Integrated Solution:</strong> Our fully backward-integrated 500+ tons/month foundry combined with 200+ components/day CNC capacity and in-house finishing compresses this entire process into 2-4 weeks. You eliminate supplier coordination complexity while gaining supply chain resilience—if one process needs maintenance, others continue uninterrupted. Result: faster response to customer needs, better capacity utilization of your own assembly lines, and the flexibility to win deals competitors can't deliver in your required timeframe.</p>
-                </div>
-
-                <div style="background: var(--dark-bg); padding: 2rem; border-radius: 8px; border-left: 4px solid var(--red);">
-                    <h3 style="color: var(--red); margin-bottom: 1rem;">Quality Inconsistency & Field Failures</h3>
-                    <p style="color: var(--text-light); margin-bottom: 1rem;"><strong style="color: var(--blue);">The Challenge:</strong> Many Indian foundries have variable quality—components that pass incoming inspection still cause 5-8% field failure rates, damaging your brand reputation, requiring expensive warranty replacements, and forcing you to redesign products for over-engineered safety margins that increase your manufacturing costs.</p>
-                    <p style="color: var(--text-light);"><strong style="color: var(--blue);">MTI's Integrated Solution:</strong> Our 13-point testing suite (1,000+ monthly test capacity) combined with ISO 9001:2015 systems and third-party inspection capability means consistent excellence. Problems are caught internally before shipment. Your incoming inspection becomes a rubber stamp, not a bottleneck. Result: zero-defect components reduce your warranty costs by 60-80%, eliminate the need for over-engineered designs, and free up your quality team to focus on value-added work instead of firefighting failures.</p>
-                </div>
-
-                <div style="background: var(--dark-bg); padding: 2rem; border-radius: 8px; border-left: 4px solid var(--red);">
-                    <h3 style="color: var(--red); margin-bottom: 1rem;">Cost Pressure vs. Quality Compromise</h3>
-                    <p style="color: var(--text-light); margin-bottom: 1rem;"><strong style="color: var(--blue);">The Challenge:</strong> Your customers demand lower component costs, but cheaper suppliers typically mean compromised material integrity, wider tolerances, or inconsistent quality—forcing you to choose between competitive pricing and product reliability. This creates a lose-lose scenario where you're either priced out of deals or stuck with warranty claims.</p>
-                    <p style="color: var(--text-light);"><strong style="color: var(--blue);">MTI's Integrated Solution:</strong> Our vertical integration eliminates 10-15% middleman costs while maintaining premium quality—you get both. Our 60-year operational efficiency combined with economies of scale from our established customer base means we've engineered cost out of our process, not quality. We pass these savings directly to you. Result: you win price-sensitive deals without sacrificing reliability, strengthen your gross margins, and gain pricing power in negotiations because you can deliver better components at lower costs than competitors.</p>
-                </div>
-
-                <div style="background: var(--dark-bg); padding: 2rem; border-radius: 8px; border-left: 4px solid var(--red);">
-                    <h3 style="color: var(--red); margin-bottom: 1rem;">Accountability & Problem Resolution Speed</h3>
-                    <p style="color: var(--text-light); margin-bottom: 1rem;"><strong style="color: var(--blue);">The Challenge:</strong> When quality issues arise, multiple vendors blame each other while your production line sits idle. Is it a casting defect, a machining error, or improper coating? Finger-pointing between suppliers costs you thousands per hour in lost production while the issue gets resolved across weeks instead of hours.</p>
-                    <p style="color: var(--text-light);"><strong style="color: var(--blue);">MTI's Integrated Solution:</strong> Single point of accountability under one roof with one team. When you report an issue, we investigate in our own facility immediately—no vendor negotiations, no cross-company finger-pointing. Our integrated processes mean we can trace any defect to its source within hours, implement a fix, and resume shipping within 24 hours. Result: your production line restarts faster, problem-solving isn't delayed by vendor politics, and you maintain customer delivery commitments even when issues occur.</p>
-                </div>
-
-                <div style="background: var(--dark-bg); padding: 2rem; border-radius: 8px; border-left: 4px solid var(--red);">
-                    <h3 style="color: var(--red); margin-bottom: 1rem;">Compliance Complexity & International Expansion</h3>
-                    <p style="color: var(--text-light); margin-bottom: 1rem;"><strong style="color: var(--blue);">The Challenge:</strong> International standards (ASME, EN, API) are complex and expensive to implement. Many Indian suppliers can't meet them, forcing you to work with limited options, pay premiums for certified suppliers, or spend engineering effort educating new suppliers about your requirements—slowing your ability to expand into export markets.</p>
-                    <p style="color: var(--text-light);"><strong style="color: var(--blue);">MTI's Integrated Solution:</strong> Our 60-year track record serving global OEMs means we've already embedded ASME, EN, and API compliance into our operations. You don't have to manage supplier education or certification—we're already there. We can supply components to any international standard without adding cost or timeline. Result: you can confidently enter export markets, win contracts from multinational customers, and leverage MTI's global credibility to accelerate your own international expansion without the complexity and cost of managing multiple international suppliers.</p>
-                </div>
-
-                <div style="background: var(--dark-bg); padding: 2rem; border-radius: 8px; border-left: 4px solid var(--red);">
-                    <h3 style="color: var(--red); margin-bottom: 1rem;">Supply Chain Visibility & Planning Certainty</h3>
-                    <p style="color: var(--text-light); margin-bottom: 1rem;"><strong style="color: var(--blue);">The Challenge:</strong> Managing multiple suppliers creates planning chaos. You're constantly tracking which vendor is in which stage of the process, negotiating delivery dates with different facilities, and absorbing last-minute delays from one vendor that cascade through your entire supply chain.</p>
-                    <p style="color: var(--text-light);"><strong style="color: var(--blue);">MTI's Integrated Solution:</strong> All processes under one facility means predictable 2-4 week lead times with minimal variance. One supplier, one contact, one schedule to track. We can scale up for your peak seasons, absorb rush orders for customer emergencies, and maintain consistent delivery because our diversified process (foundry + machining + finishing) means we're never bottlenecked at a single stage. Result: your supply chain planning becomes accurate and predictable, your inventory management optimizes because you can reduce safety stock, and your working capital improves because you're not carrying excess components from multiple unreliable suppliers.</p>
-                </div>
-            </div>
+  <!-- TARGET MARKETS -->
+  <section class="section section--gray markets">
+    <div class="container">
+      <div class="section-header fade-up">
+        <span class="section-label">Industries We Serve</span>
+        <div class="amber-bar"></div>
+        <h2>Serving Diverse Sectors<br />with Precision</h2>
+      </div>
+      <div class="markets__grid">
+        <div class="market-card fade-up">
+          <div class="market-card__icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="7" width="20" height="14" rx="1"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/></svg>
+          </div>
+          <h4>Infrastructure Equipment</h4>
+          <p>Heavy-duty components engineered for construction machinery and large-scale infrastructure projects.</p>
         </div>
-    </section>
-            <div class="grid-3">
-                <div class="feature-number">
-                    <div class="number">01</div>
-                    <div class="text">
-                        <h3>Infrastructure Equipment</h3>
-                    </div>
-                </div>
-            </div>
-            <div class="grid-3">
-                <div class="feature-number">
-                    <div class="number">02</div>
-                    <div class="text">
-                        <h3>Agricultural Machinery</h3>
-                    </div>
-                </div>
-            </div>
-            <div class="grid-3">
-                <div class="feature-number">
-                    <div class="number">03</div>
-                    <div class="text">
-                        <h3>Power Transmission</h3>
-                    </div>
-                </div>
-            </div>
-            <div class="grid-3">
-                <div class="feature-number">
-                    <div class="number">04</div>
-                    <div class="text">
-                        <h3>Industrial Machine Parts</h3>
-                    </div>
-                </div>
-            </div>
-            <div class="grid-3">
-                <div class="feature-number">
-                    <div class="number">05</div>
-                    <div class="text">
-                        <h3>HVAC System Components</h3>
-                    </div>
-                </div>
-            </div>
-            <div class="grid-3">
-                <div class="feature-number">
-                    <div class="number">06</div>
-                    <div class="text">
-                        <h3>Textile Machinery</h3>
-                    </div>
-                </div>
-            </div>
+        <div class="market-card fade-up">
+          <div class="market-card__icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><path d="M9 22V12h6v10"/></svg>
+          </div>
+          <h4>Agricultural Machinery</h4>
+          <p>Reliable, high-tolerance parts for threshers, crushers, and agri-equipment operating in demanding conditions.</p>
         </div>
-    </section>
-
-    <!-- Products Section -->
-    <section class="section section-alt" id="products">
-        <div class="container">
-            <h2>Product Range</h2>
-            <p style="max-width: 900px; margin-bottom: 3rem;">MTI specializes in precision-engineered components and industrial castings with weight ranges from 1 KG to 8000 KG per piece, serving both low and high-volume production needs.</p>
-            
-            <div class="grid-2">
-                <div class="product-column">
-                    <h3 style="color: var(--blue); margin-bottom: 1.5rem;">Power Transmission Products</h3>
-                    <div class="product-item">Plain Bore Pulley</div>
-                    <div class="product-item">Taper & Plain Bush Pulley</div>
-                    <div class="product-item">Taper Pin Bush Couplings</div>
-                    <div class="product-item">Grooved Pulley (4-80 inch size)</div>
-                    <div class="product-item">Split Pulley</div>
-                    <div class="product-item">Fly Wheel</div>
-                    <div class="product-item">Chain Pulley (50 KGS - 1000 KGS)</div>
-                    <div class="product-item">V Belt & Flat Pulleys</div>
-                </div>
-
-                <div class="product-column">
-                    <h3 style="color: var(--blue); margin-bottom: 1.5rem;">Castings & Components</h3>
-                    <div class="product-item">Cast Iron & SGI Castings</div>
-                    <div class="product-item">Manifolds & Valve Parts (Ready-to-Use)</div>
-                    <div class="product-item">Custom Parts per Specification</div>
-                    <div class="product-item">Crusher & Thresher Machinery Parts</div>
-                    <div class="product-item">All Types of Bushes</div>
-                    <div class="product-item">Cored & Non-Cored Components</div>
-                    <div class="product-item">Graded & Commercial Castings</div>
-                    <div class="product-item">Precision Machined Components</div>
-                </div>
-            </div>
+        <div class="market-card fade-up">
+          <div class="market-card__icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
+          </div>
+          <h4>Power Transmission</h4>
+          <p>Precision pulleys, couplings, flywheels, and V-belt sheaves for seamless power transfer systems.</p>
         </div>
-    </section>
-
-    <!-- Quality Section -->
-    <section class="section">
-        <div class="container">
-            <h2>Quality & Compliance</h2>
-            <div class="grid-2" style="margin-bottom: 3rem;">
-                <div>
-                    <h3>Our Quality Commitment</h3>
-                    <p>At MTI, quality is not just a goal—it's a commitment to every partner we serve. Our quality philosophy is driven by a continuous improvement mindset, rigorous in-house inspection processes, and full compliance with ISO 9001:2015 certification.</p>
-                    <h3 style="margin-top: 2rem;">Quality Objectives</h3>
-                    <ul style="list-style: none; padding: 0;">
-                        <li style="padding: 0.8rem 0; border-bottom: 1px solid #eee;">✓ Consistently exceed customer expectations with 100% on-time delivery</li>
-                        <li style="padding: 0.8rem 0; border-bottom: 1px solid #eee;">✓ Maintain zero-defect approach through proactive quality checks</li>
-                        <li style="padding: 0.8rem 0; border-bottom: 1px solid #eee;">✓ Remain cost-competitive without compromising material integrity</li>
-                        <li style="padding: 0.8rem 0; border-bottom: 1px solid #eee;">✓ Provide responsive after-sales support and long-term performance</li>
-                        <li style="padding: 0.8rem 0;">✓ Continuously upgrade systems, technology, and workforce capabilities</li>
-                    </ul>
-                </div>
-
-                <div>
-                    <h3>Testing & Inspection</h3>
-                    <ul style="list-style: none; padding: 0;">
-                        <li style="padding: 0.8rem 0; border-bottom: 1px solid #eee;">• Chemical Analysis Test Report</li>
-                        <li style="padding: 0.8rem 0; border-bottom: 1px solid #eee;">• Physical Analysis Test Report</li>
-                        <li style="padding: 0.8rem 0; border-bottom: 1px solid #eee;">• Micro Structure & Spectro Analysis</li>
-                        <li style="padding: 0.8rem 0; border-bottom: 1px solid #eee;">• Dimensional Accuracy Reports</li>
-                        <li style="padding: 0.8rem 0; border-bottom: 1px solid #eee;">• Dynamic & Static Balancing</li>
-                        <li style="padding: 0.8rem 0; border-bottom: 1px solid #eee;">• Ultrasound & MPT Testing</li>
-                        <li style="padding: 0.8rem 0; border-bottom: 1px solid #eee;">• Hydro & Pressure Testing</li>
-                        <li style="padding: 0.8rem 0;">• Third Party Inspection Facility</li>
-                    </ul>
-                </div>
-            </div>
+        <div class="market-card fade-up">
+          <div class="market-card__icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
+          </div>
+          <h4>Industrial Machine Parts</h4>
+          <p>Custom and standard machined components for a wide range of industrial machinery and OEM requirements.</p>
         </div>
-    </section>
-
-    <!-- Sustainability Section -->
-    <section class="section section-alt" id="sustainability">
-        <div class="container">
-            <h2>Sustainability Practices</h2>
-            <p style="max-width: 900px; margin-bottom: 3rem;">At MTI, we recognize that long-term industrial growth must go hand in hand with environmental responsibility. We are actively implementing sustainable practices to reduce our ecological footprint while enhancing operational efficiency.</p>
-            
-            <div class="grid-2">
-                <div class="card">
-                    <h3>Sand Reclamation System</h3>
-                    <p>Our foundry recycles and reuses molding sand, reducing raw material consumption and minimizing waste generation.</p>
-                </div>
-                <div class="card">
-                    <h3>Energy-Efficient Furnaces</h3>
-                    <p>Modern induction furnaces designed to reduce energy consumption during metal melting, lowering carbon emissions significantly.</p>
-                </div>
-                <div class="card">
-                    <h3>Low-VOC Coatings</h3>
-                    <p>Powder coating and CED painting with low volatile organic compounds ensure reduced air pollution and improved worker safety.</p>
-                </div>
-                <div class="card">
-                    <h3>Solid Waste Segregation</h3>
-                    <p>Structured waste management system with segregation at source and recycling initiatives with certified vendors.</p>
-                </div>
-            </div>
+        <div class="market-card fade-up">
+          <div class="market-card__icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 12h20M2 12c0 5.5 4.5 10 10 10s10-4.5 10-10M2 12C2 6.5 6.5 2 12 2s10 4.5 10 10"/><path d="M12 2v20"/></svg>
+          </div>
+          <h4>HVAC System Components</h4>
+          <p>Manifolds, valve parts, and precision castings purpose-built for HVAC and fluid-handling applications.</p>
         </div>
-    </section>
-
-    <!-- Production Capacity Section -->
-    <section class="section section-alt">
-        <div class="container">
-            <h2>Production Capacity & Delivery Excellence</h2>
-            <p style="max-width: 900px; margin-bottom: 3rem; font-size: 1.1rem;">MTI's integrated manufacturing ecosystem is engineered to deliver three simultaneous benefits: rapid turnaround (2-4 weeks), superior quality (zero-defect approach), and flexible scalability (1 KG to 8,000 KG per piece, 1 unit to 10,000 units per batch):</p>
-            
-            <div class="grid-3">
-                <div class="card">
-                    <h3>Foundry-to-Finished-Product Pipeline</h3>
-                    <ul style="list-style: none; padding: 0;">
-                        <li style="padding: 0.8rem 0; border-bottom: 1px solid #eee;">• <strong>500+ tons/month foundry capacity (induction furnaces 100-500 KGs, CO2/No-Bake/High-Pressure moulding)</strong> combined with <strong>200+ components/day CNC throughput (10+ dedicated machines: turning centers, VMC, wire cut, grinding)</strong> creates a synchronized production pipeline where casting capacity and machining capacity are perfectly balanced. This eliminates the bottleneck that plagues many foundries where castings pile up waiting for external machining, or machining sits idle waiting for castings. Result: fast, consistent delivery with minimal inventory buildup.</li>
-                        <li style="padding: 0.8rem 0; border-bottom: 1px solid #eee;">• <strong>Weight range flexibility (1 KG to 8,000 KG per piece) means a single supplier handles your entire component portfolio</strong>—from small precision spindle components to massive industrial gearbox housings. You're not juggling multiple vendors for different weight classes; MTI scales with your design changes and product mix evolution.</li>
-                        <li style="padding: 0.8rem 0;">• <strong>Multiple moulding technologies under one roof (CO2, No-Bake, High-Pressure, Shell Core) eliminate vendor switching costs and quality variance</strong> when your designs require different casting methods. One supplier, one quality system, consistent excellence across all your component types.</li>
-                    </ul>
-                </div>
-
-                <div class="card">
-                    <h3>Lead Time Compression Through Integration</h3>
-                    <ul style="list-style: none; padding: 0;">
-                        <li style="padding: 0.8rem 0; border-bottom: 1px solid #eee;">• <strong>Standard 2-4 week delivery (rush 10-14 days possible) compresses traditional 8-12 week timelines by 60-75% because foundry→machining→coating→testing all happen sequentially under one roof</strong> instead of waiting for external vendors. This speed advantage compounds throughout your year—you can absorb customer demand spikes without building speculative inventory, launch new product variants faster, and respond to market opportunities before competitors.</li>
-                        <li style="padding: 0.8rem 0; border-bottom: 1px solid #eee;">• <strong>Predictable delivery (minimal variance) comes from having all processes under one roof with one schedule,</strong> not coordinating three different vendors' priorities. Your supply chain planning becomes accurate. You reduce safety stock by 20-30% because you trust the delivery date. Your production lines run more efficiently because you're not accommodating uncertainty.</li>
-                        <li style="padding: 0.8rem 0;">• <strong>Finish options (powder coating, CED, phosphating, hydro testing) integrated in-house mean components arrive ready-to-install</strong> at 2-4 weeks. Competitors shipping raw castings require your additional 2-3 weeks of external finishing, meaning their "fast delivery" is actually slower total lead time. You get the final product while they're still in secondary processing.</li>
-                    </ul>
-                </div>
-
-                <div class="card">
-                    <h3>Quality Assurance as Competitive Weapon</h3>
-                    <ul style="list-style: none; padding: 0;">
-                        <li style="padding: 0.8rem 0; border-bottom: 1px solid #eee;">• <strong>13-point testing suite (1,000+ monthly test capacity) including spectro analysis, ultrasound (UT), magnetic particle testing (MPT), dimensional accuracy (CMM), dynamic balancing, and hydro testing means every batch undergoes comprehensive verification</strong>. Problems that slip through at competitor facilities are caught at MTI. This systematic testing combined with ISO 9001:2015 controls means you get true zero-defect components, not just "acceptable" parts.</li>
-                        <li style="padding: 0.8rem 0; border-bottom: 1px solid #eee;">• <strong>Third-party inspection facility access for critical orders provides independent verification that backs up MTI's testing</strong>, giving you the external credibility you need for customer audits and compliance documentation. You don't need to conduct redundant testing; the burden of proof is already satisfied.</li>
-                        <li style="padding: 0.8rem 0;">• <strong>Built-in quality checkpoints at every process stage (13 checkpoints across casting, machining, finishing) mean defects are caught in hours, not discovered in the field after shipment.</strong> Rework happens internally at our cost, not at your customer's cost. Field failure rates drop to 0.5-1% (vs. 5-8% industry average), meaning fewer warranty claims, better customer satisfaction, and stronger repeat business.</li>
-                    </ul>
-                </div>
-
-                <div class="card">
-                    <h3>Scalability for Growth Without Vendor Switching</h3>
-                    <ul style="list-style: none; padding: 0;">
-                        <li style="padding: 0.8rem 0; border-bottom: 1px solid #eee;">• <strong>From prototype (single unit) to high-volume (10,000+ units/month), MTI's capacity and flexibility scale with your business growth without requiring vendor changes.</strong> You don't outgrow us. As your company scales, we scale with you—eliminating the expensive and risky process of qualifying new suppliers when your volume increases.</li>
-                        <li style="padding: 0.8rem 0; border-bottom: 1px solid #eee;">• <strong>Capacity redundancy within integrated facility (multiple furnaces, multiple CNC machines, multiple moulding lines) means your production never stops</strong> for supplier maintenance or unexpected shutdowns. If one line needs service, others continue uninterrupted. You maintain delivery commitments even during our routine maintenance.</li>
-                        <li style="padding: 0.8rem 0;">• <strong>Domestic and international specification capability (IS, ASME, EN standards) means as you expand into new markets or gain international customers, MTI scales with you without needing additional suppliers.</strong> One supplier for domestic manufacturing. Same supplier for export orders. Consistent quality across all markets. Simpler supply chain complexity.</li>
-                    </ul>
-                </div>
-
-                <div class="card">
-                    <h3>Cost Efficiency Through Vertical Integration</h3>
-                    <ul style="list-style: none; padding: 0;">
-                        <li style="padding: 0.8rem 0; border-bottom: 1px solid #eee;">• <strong>10-15% cost advantage from eliminated middleman costs, combined with economies of scale from 60 years of operation, translates into competitive pricing without quality compromise.</strong> We've engineered inefficiency out of our process. You benefit from that efficiency directly.</li>
-                        <li style="padding: 0.8rem 0; border-bottom: 1px solid #eee;">• <strong>Flexibility in finish options (powder coating ₹200-400/kg, CED ₹150-250/kg, phosphating ₹100-150/kg) combined with in-house application means lower per-unit finishing costs</strong> compared to outsourced secondary vendors who add their margin and setup fees.</li>
-                        <li style="padding: 0.8rem 0;">• <strong>Total cost of ownership (component cost + quality costs + logistics + inventory carrying + rework) is 25-35% lower than multi-vendor sourcing</strong> because you eliminate coordination overhead, reduce warranty claims by 80%, minimize safety stock, and cut lead time uncertainty costs.</li>
-                    </ul>
-                </div>
-
-                <div class="card">
-                    <h3>Strategic Capabilities for Competitive Advantage</h3>
-                    <ul style="list-style: none; padding: 0;">
-                        <li style="padding: 0.8rem 0; border-bottom: 1px solid #eee;">• <strong>CNC precision to micron-level tolerances combined with foundry flexibility means you can design components that competitors can't manufacture</strong>. Your engineering team has access to capabilities (complex geometries, tight tolerances, custom alloys) that most suppliers either can't do or charge premiums for. MTI makes these capabilities standard.</li>
-                        <li style="padding: 0.8rem 0; border-bottom: 1px solid #eee;">• <strong>Rapid turnaround (2-4 weeks) + quality assurance (zero-defect) + cost efficiency (10-15% savings) = a supplier that lets you outmaneuver competitors.</strong> You can develop products faster, launch variants more frequently, and absorb market demand spikes while competitors are still negotiating with multiple vendors.</li>
-                        <li style="padding: 0.8rem 0;">• <strong>Investment in government incentive programs (Make in India, PLI schemes) means MTI continuously upgrades technology, automation, and capabilities.</strong> As you work with MTI, you benefit from our ongoing investments in 3D scanning, CMM inspection, and Industry 4.0 implementation—staying ahead of competitors even as manufacturing standards evolve.</li>
-                    </ul>
-                </div>
-            </div>
+        <div class="market-card fade-up">
+          <div class="market-card__icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 22h16a2 2 0 002-2V4a2 2 0 00-2-2H8a2 2 0 00-2 2v2"/><path d="M4 22a2 2 0 01-2-2V10c0-1.1.9-2 2-2h4v14H4z"/><path d="M10 14h4M10 18h4M10 10h4"/></svg>
+          </div>
+          <h4>Textile Machinery</h4>
+          <p>Our heritage sector — supplying precision castings and machined parts to textile OEMs since inception.</p>
         </div>
-    </section>
-            
-            <div class="grid-2">
-                <div>
-                    <h3 style="color: var(--red); margin-bottom: 1.5rem;">Foundry & Melting</h3>
-                    <ul style="list-style: none; padding: 0;">
-                        <li style="padding: 0.8rem 0;">• Induction Furnace 100-500 KGs</li>
-                        <li style="padding: 0.8rem 0;">• CO2 & No-Bake Moulding Facility</li>
-                        <li style="padding: 0.8rem 0;">• High Pressure Moulding Line</li>
-                        <li style="padding: 0.8rem 0;">• Core Shooter (Cold Box/Shell Core)</li>
-                        <li style="padding: 0.8rem 0;">• Sand Plant & Pattern Shop</li>
-                    </ul>
-                </div>
+      </div>
+    </div>
+  </section>
 
-                <div>
-                    <h3 style="color: var(--red); margin-bottom: 1.5rem;">Machining & Finishing</h3>
-                    <ul style="list-style: none; padding: 0;">
-                        <li style="padding: 0.8rem 0;">• CNC Turning Centre & VMC Machine</li>
-                        <li style="padding: 0.8rem 0;">• Lath, Drill & Milling Machines</li>
-                        <li style="padding: 0.8rem 0;">• Wire Cut & Grinding Machines</li>
-                        <li style="padding: 0.8rem 0;">• Powder Coating & Painting Facility</li>
-                        <li style="padding: 0.8rem 0;">• CED Coating & Shot Blasting</li>
-                    </ul>
-                </div>
-            </div>
+  <!-- WHY MTI -->
+  <section class="section why-mti section--dark">
+    <div class="container">
+      <div class="section-header fade-up" style="text-align:center;max-width:640px;margin:0 auto 3.5rem;">
+        <span class="section-label">Why Choose Us</span>
+        <div class="amber-bar" style="margin:0 auto 1.5rem;"></div>
+        <h2>Built on Trust,<br />Driven by Quality</h2>
+      </div>
+      <div class="why-grid">
+        <div class="why-item fade-up">
+          <div class="why-item__num">01</div>
+          <div>
+            <h4>Proven Track Record</h4>
+            <p>Since 1964, MTI has evolved from a textile-sector casting supplier to a full-fledged manufacturing partner to Indian and global brands.</p>
+          </div>
         </div>
-    </section>
-
-    <!-- Clients Section -->
-    <section class="section section-alt">
-        <div class="container">
-            <h2>Valued Clientele</h2>
-            <p style="margin-bottom: 3rem;">MTI serves leading OEMs and manufacturers across India and globally, including:</p>
-            
-            <div class="client-grid">
-                <div class="client-item">Ingersoll Rand (India) Ltd.</div>
-                <div class="client-item">Dresser Rand (India) Ltd.</div>
-                <div class="client-item">Fenner India Ltd.</div>
-                <div class="client-item">McNally Sayaji Engineering Ltd.</div>
-                <div class="client-item">Gardner Denver</div>
-                <div class="client-item">Solitaire Machine Tools Ltd.</div>
-                <div class="client-item">Amman Apollo India Pvt. Ltd.</div>
-                <div class="client-item">Bhagwati Crushers Pvt. Ltd.</div>
-                <div class="client-item">Modern Insulators Ltd.</div>
-            </div>
+        <div class="why-item fade-up">
+          <div class="why-item__num">02</div>
+          <div>
+            <h4>ISO-Certified Quality</h4>
+            <p>ISO 9001:2015 certified systems with third-party inspections and in-house testing for metallurgy, dimensional accuracy, and mechanical strength.</p>
+          </div>
         </div>
-    </section>
-
-    <!-- Investment Section -->
-    <section class="section">
-        <div class="container">
-            <h2>Investment Opportunity</h2>
-            
-            <div class="grid-2" style="margin-bottom: 3rem;">
-                <div>
-                    <h3 style="color: var(--red); margin-bottom: 1.5rem;">Why Invest in MTI?</h3>
-                    <div style="background: var(--dark-bg); padding: 2rem; border-radius: 8px;">
-                        <ul style="list-style: none; padding: 0;">
-                            <li style="padding: 1rem 0; border-bottom: 1px solid #ddd;">
-                                <strong style="color: var(--blue);">Proven Track Record</strong><br>
-                                <span style="font-size: 0.95rem;">60+ years of manufacturing excellence</span>
-                            </li>
-                            <li style="padding: 1rem 0; border-bottom: 1px solid #ddd;">
-                                <strong style="color: var(--blue);">Diverse Product Portfolio</strong><br>
-                                <span style="font-size: 0.95rem;">Precision pulleys, couplings, and castings</span>
-                            </li>
-                            <li style="padding: 1rem 0; border-bottom: 1px solid #ddd;">
-                                <strong style="color: var(--blue);">Robust Infrastructure</strong><br>
-                                <span style="font-size: 0.95rem;">Advanced CNC, spectrochemical labs, foundry</span>
-                            </li>
-                            <li style="padding: 1rem 0; border-bottom: 1px solid #ddd;">
-                                <strong style="color: var(--blue);">Strategic Location</strong><br>
-                                <span style="font-size: 0.95rem;">Gujarat's premier manufacturing hub</span>
-                            </li>
-                            <li style="padding: 1rem 0;">
-                                <strong style="color: var(--blue);">Quality Commitment</strong><br>
-                                <span style="font-size: 0.95rem;">ISO-certified systems and third-party inspections</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div>
-                    <h3 style="color: var(--red); margin-bottom: 1.5rem;">Strategic Growth Goals</h3>
-                    <div style="background: var(--dark-bg); padding: 2rem; border-radius: 8px;">
-                        <ul style="list-style: none; padding: 0;">
-                            <li style="padding: 1rem 0; border-bottom: 1px solid #ddd;">
-                                <strong style="color: var(--red);">▸</strong> Expand production capacity for domestic & export markets
-                            </li>
-                            <li style="padding: 1rem 0; border-bottom: 1px solid #ddd;">
-                                <strong style="color: var(--red);">▸</strong> Introduce smart manufacturing technologies (3D scanning, radiography)
-                            </li>
-                            <li style="padding: 1rem 0; border-bottom: 1px solid #ddd;">
-                                <strong style="color: var(--red);">▸</strong> Establish joint ventures with international OEMs
-                            </li>
-                            <li style="padding: 1rem 0; border-bottom: 1px solid #ddd;">
-                                <strong style="color: var(--red);">▸</strong> Strengthen R&D and prototyping capabilities
-                            </li>
-                            <li style="padding: 1rem 0;">
-                                <strong style="color: var(--red);">▸</strong> Comply with international export standards (ASME, EN)
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+        <div class="why-item fade-up">
+          <div class="why-item__num">03</div>
+          <div>
+            <h4>Fully Integrated Facility</h4>
+            <p>End-to-end in-house manufacturing — from induction melting to CNC machining and finishing — ensures cost-effectiveness and rapid turnaround.</p>
+          </div>
         </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section class="section section-alt" id="contact">
-        <div class="container">
-            <h2>Get in Touch</h2>
-            
-            <div class="grid-3">
-                <div class="card">
-                    <h3>📍 Location</h3>
-                    <p>Block No. 4, New Shalkhata, Gujarat Ginning Mill Compound, Outside Premdarwaja, Ahmedabad – 380016, Gujarat, India</p>
-                </div>
-                <div class="card">
-                    <h3>📞 Phone</h3>
-                    <p><strong>Office:</strong> +91 79 22123506 / +91 79 29723506</p>
-                    <p><strong>Chairman:</strong> +91 98250 39161</p>
-                    <p><strong>Vice Chairman:</strong> +91 98251 65010</p>
-                </div>
-                <div class="card">
-                    <h3>✉️ Email</h3>
-                    <p>minatext_1029@yahoo.co.in</p>
-                    <p>kapoorsalot@yahoo.com</p>
-                </div>
-            </div>
-
-            <div style="background: var(--dark-bg); padding: 2rem; border-radius: 8px; margin-top: 3rem;">
-                <h3 style="color: var(--blue); margin-bottom: 1rem;">Company Details</h3>
-                <div style="columns: 2; gap: 2rem;">
-                    <p><strong>GST Number:</strong> 24AANFM5019LIZ1</p>
-                    <p><strong>PAN Number:</strong> AANFM5019L</p>
-                    <p><strong>Udyam Registration:</strong> UDYAM-GJ-01-0030316</p>
-                    <p><strong>Organization Type:</strong> Partnership Firm</p>
-                </div>
-            </div>
+        <div class="why-item fade-up">
+          <div class="why-item__num">04</div>
+          <div>
+            <h4>Strategic Location</h4>
+            <p>Operating from Gujarat — India's most vibrant industrial cluster — offering cost efficiency, skilled labor, and excellent logistics for global exports.</p>
+          </div>
         </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="footer-content">
-            <div class="footer-section">
-                <h3>About MTI</h3>
-                <p style="color: rgba(255,255,255,0.8); margin-bottom: 0;">Mina Textile Industries is a leading manufacturer of precision-engineered industrial components serving global OEMs since 1964.</p>
-            </div>
-            <div class="footer-section">
-                <h3>Quick Links</h3>
-                <ul>
-                    <li><a href="#about">About Us</a></li>
-                    <li><a href="#markets">Market Position</a></li>
-                    <li><a href="#products">Products</a></li>
-                    <li><a href="#sustainability">Sustainability</a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h3>Contact</h3>
-                <ul>
-                    <li>📍 Ahmedabad, Gujarat</li>
-                    <li>📞 +91 79 22123506</li>
-                    <li>✉️ minatext_1029@yahoo.co.in</li>
-                </ul>
-            </div>
+        <div class="why-item fade-up">
+          <div class="why-item__num">05</div>
+          <div>
+            <h4>Market Leadership</h4>
+            <p>India is the second-largest casting producer globally, and MTI is ideally positioned to scale and serve both domestic and international markets.</p>
+          </div>
         </div>
-        <div class="footer-bottom">
-            <p>&copy; 2025 Mina Textile Industries. All rights reserved. | Precision Engineering Excellence Since 1964</p>
+        <div class="why-item fade-up">
+          <div class="why-item__num">06</div>
+          <div>
+            <h4>Government-Backed Growth</h4>
+            <p>Benefiting from Make in India and PLI schemes, with positioning to comply with export standards like ASME and EN for global partnerships.</p>
+          </div>
         </div>
-    </footer>
+      </div>
+    </div>
+  </section>
 
-    <script>
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
-            });
-        });
+  <!-- KEY CLIENTS -->
+  <section class="section clients">
+    <div class="container">
+      <div class="section-header fade-up" style="text-align:center;max-width:560px;margin:0 auto 3rem;">
+        <span class="section-label">Our Clientele</span>
+        <div class="amber-bar" style="margin:0 auto 1.5rem;"></div>
+        <h2>Trusted by Industry Leaders</h2>
+        <p style="margin-top:.75rem;">Serving 30+ valued clients across India and internationally, including leading OEMs and industrial brands.</p>
+      </div>
+      <div class="clients__marquee-wrap">
+        <div class="clients__marquee">
+          <div class="clients__track">
+            <span>Ingersoll Rand</span><span>Fenner India</span><span>Dresser Rand</span>
+            <span>Thermax India</span><span>PIX Transmission</span><span>Gardner Denver</span>
+            <span>Modern Insulators</span><span>International Combustion</span>
+            <span>McNally Sayaji Engineering</span><span>Amman Apollo India</span>
+            <span>Kemtron Technologies</span><span>Solitaire Machine Tools</span>
+            <!-- duplicate for seamless loop -->
+            <span>Ingersoll Rand</span><span>Fenner India</span><span>Dresser Rand</span>
+            <span>Thermax India</span><span>PIX Transmission</span><span>Gardner Denver</span>
+            <span>Modern Insulators</span><span>International Combustion</span>
+            <span>McNally Sayaji Engineering</span><span>Amman Apollo India</span>
+            <span>Kemtron Technologies</span><span>Solitaire Machine Tools</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-        // Add scroll effect to navbar
-        window.addEventListener('scroll', function() {
-            const nav = document.querySelector('nav');
-            if (window.scrollY > 10) {
-                nav.style.boxShadow = '0 4px 20px rgba(0,0,0,0.1)';
-            } else {
-                nav.style.boxShadow = '0 2px 20px rgba(0,0,0,0.08)';
-            }
-        });
-    </script>
+  <!-- CTA BAND -->
+  <section class="cta-band">
+    <div class="container cta-band__inner fade-up">
+      <div>
+        <h2 style="color:var(--white);">Ready to Partner with MTI?</h2>
+        <p style="color:rgba(255,255,255,.75);margin-top:.5rem;">Explore investment opportunities or request a custom component quote.</p>
+      </div>
+      <div style="display:flex;gap:1rem;flex-wrap:wrap;">
+        <a href="contact.html" class="btn btn-primary">Contact Us Today</a>
+        <a href="products.html" class="btn btn-outline">View Products</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <img src="images/mina-logo-full.png" alt="MTI — Mina Textile Industries — Iron and Brass Founders" class="footer__brand-img" width="851" height="293" />
+          <p>Precision-engineered power transmission products and industrial castings. Based in Ahmedabad, Gujarat, India.</p>
+          <div class="iso-badge">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"/></svg>
+            ISO 9001:2015 Certified
+          </div>
+        </div>
+        <div class="footer__col">
+          <h5>Navigation</h5>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h5>Products</h5>
+          <ul>
+            <li><a href="products.html">Pulleys & Sheaves</a></li>
+            <li><a href="products.html">Industrial Castings</a></li>
+            <li><a href="products.html">Couplings</a></li>
+            <li><a href="products.html">Flywheels</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h5>Contact</h5>
+          <div class="footer__contact-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>Block No. 4, New Shalkhata, Gujarat Ginning Mill Compound, Ahmedabad – 380016</span>
+          </div>
+          <div class="footer__contact-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.18 1.26a2 2 0 012-.27h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.91a16 16 0 006.09 6.09l1.21-1.21a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7a2 2 0 011.72 2.02z"/></svg>
+            <span>+91 79 22123506 / +91 98250 39161</span>
+          </div>
+          <div class="footer__contact-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <span>minatext_1029@yahoo.co.in</span>
+          </div>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span>© 2025 Mina Textile Industries (MTI). All rights reserved.</span>
+        <span>GST: 24AANFM5019LIZ1 · UDYAM-GJ-01-0030316</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
 </body>
 </html>
